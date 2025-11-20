@@ -1,0 +1,577 @@
+=== MC-Natev1: ORDER OBJECT TRACKING ===
+Version=MC-Natev1.19-OrderObjectTracking
+TP Risk Multiplier: 1
+Require Directional Bar: True
+Chop Filters: False
+Stall Exit: False (Length=3)
+Continuation Scaling: True
+Continue After Pullbacks: True
+Allow Multiple MCs: True
+Entry Config: E1=PB33(1), E2=NA(1), E3=NA(2), E4=NA(4)
+STRATEGY: Track Order objects directly, cancel by reference
+
+[11/17/2025 10:00:00 AM] --- EvaluateLongEntry START ---
+[11/17/2025 10:00:00 AM] REJECT: Not a bull bar (Close=25198.50, Open=25218.75)
+[11/17/2025 10:00:00 AM] --- EvaluateShortEntry START ---
+[11/17/2025 10:00:00 AM] REJECT: Close >= EMA20 (25198.50 >= 25177.92)
+[11/17/2025 10:10:00 AM] --- EvaluateLongEntry START ---
+[11/17/2025 10:10:00 AM] REJECT: Close <= EMA20 (25081.25 <= 25168.71)
+[11/17/2025 10:10:00 AM] --- EvaluateShortEntry START ---
+[11/17/2025 10:10:00 AM] >> CancelActivePullbackOrder(SHORT): No order to cancel (null)
+  Short_PB33_1: PB33 @ 25125.80 Qty=1 [STORED ORDER REFERENCE]
+[11/17/2025 10:10:00 AM] ✓ SHORT MC @ Bar 3: Base=25081.25 Stop=25216.25 Risk=135.00
+[11/17/2025 10:10:00 AM] >> Clearing _activeShortPullbackOrder (filled: Short_PB33_1)
+[11/17/2025 10:10:00 AM] FILLED: Short_PB33_1 @ 25125.75 | Risk=90.50 | Target=25035.25 (1R) | Stop=25216.25
+[11/17/2025 10:20:00 AM] --- EvaluateLongEntry START ---
+[11/17/2025 10:20:00 AM] REJECT: Close <= EMA20 (25066.25 <= 25158.95)
+[11/17/2025 10:20:00 AM] --- EvaluateShortEntry START ---
+[11/17/2025 10:20:00 AM] >> CancelActivePullbackOrder(SHORT): No order to cancel (null)
+  Short_PB33_2: PB33 @ 25092.32 Qty=1 [STORED ORDER REFERENCE]
+[11/17/2025 10:20:00 AM] ✓ SHORT MC @ Bar 4: Base=25066.25 Stop=25145.25 Risk=79.00
+[11/17/2025 10:20:00 AM] >> Clearing _activeShortPullbackOrder (filled: Short_PB33_2)
+[11/17/2025 10:20:00 AM] FILLED: Short_PB33_2 @ 25092.25 | Risk=53.00 | Target=25039.25 (1R) | Stop=25145.25
+[11/17/2025 10:20:00 AM] *** ORDER CANCELLED *** Profit target
+[11/17/2025 10:20:00 AM] *** STOP LOSS HIT *** Stop loss @ 25145.25
+[11/17/2025 10:30:00 AM] --- EvaluateLongEntry START ---
+[11/17/2025 10:30:00 AM] REJECT: Close <= EMA20 (25137.25 <= 25156.89)
+[11/17/2025 10:30:00 AM] --- EvaluateShortEntry START ---
+[11/17/2025 10:30:00 AM] REJECT: Not a bear bar (Close=25137.25, Open=25065.50)
+[11/17/2025 10:40:00 AM] --- EvaluateLongEntry START ---
+[11/17/2025 10:40:00 AM] REJECT: Close <= EMA20 (25076.75 <= 25149.25)
+[11/17/2025 10:40:00 AM] --- EvaluateShortEntry START ---
+[11/17/2025 10:40:00 AM] >> CancelActivePullbackOrder(SHORT): No order to cancel (null)
+  Short_PB33_3: PB33 @ 25103.15 Qty=1 [STORED ORDER REFERENCE]
+[11/17/2025 10:40:00 AM] ✓ SHORT MC @ Bar 6: Base=25076.75 Stop=25156.75 Risk=80.00
+[11/17/2025 10:40:00 AM] >> Clearing _activeShortPullbackOrder (filled: Short_PB33_3)
+[11/17/2025 10:40:00 AM] FILLED: Short_PB33_3 @ 25103.25 | Risk=53.50 | Target=25049.75 (1R) | Stop=25156.75
+[11/17/2025 10:50:00 AM] --- EvaluateLongEntry START ---
+[11/17/2025 10:50:00 AM] REJECT: Close <= EMA20 (25108.00 <= 25145.32)
+[11/17/2025 10:50:00 AM] --- EvaluateShortEntry START ---
+[11/17/2025 10:50:00 AM] REJECT: Not a bear bar (Close=25108.00, Open=25077.25)
+[11/17/2025 11:00:00 AM] --- EvaluateLongEntry START ---
+[11/17/2025 11:00:00 AM] REJECT: Close <= EMA20 (25081.75 <= 25139.27)
+[11/17/2025 11:00:00 AM] --- EvaluateShortEntry START ---
+[11/17/2025 11:00:00 AM] >> CancelActivePullbackOrder(SHORT): No order to cancel (null)
+  Short_PB33_4: PB33 @ 25103.15 Qty=1 [STORED ORDER REFERENCE]
+[11/17/2025 11:00:00 AM] ✓ SHORT MC @ Bar 8: Base=25076.75 Stop=25156.75 Risk=80.00
+[11/17/2025 11:00:00 AM] *** ORDER CANCELLED *** Stop loss
+[11/17/2025 11:00:00 AM] *** PROFIT TARGET HIT *** Profit target @ 25049.75
+[11/17/2025 11:00:00 AM] *** ORDER CANCELLED *** Stop loss
+[11/17/2025 11:00:00 AM] *** PROFIT TARGET HIT *** Profit target @ 25035.25
+[11/17/2025 11:00:00 AM] === POSITION NOW FLAT === Avg=0.00
+[11/17/2025 11:00:00 AM] >> Active PB Orders BEFORE clear: Long=NULL, Short=Short_PB33_4
+[11/17/2025 11:10:00 AM] --- EvaluateLongEntry START ---
+[11/17/2025 11:10:00 AM] REJECT: Close <= EMA20 (25006.50 <= 25126.63)
+[11/17/2025 11:10:00 AM] --- EvaluateShortEntry START ---
+[11/17/2025 11:10:00 AM] >> CancelActivePullbackOrder(SHORT): No order to cancel (null)
+  Short_PB33_5: PB33 @ 25036.53 Qty=1 [STORED ORDER REFERENCE]
+[11/17/2025 11:10:00 AM] ✓ SHORT MC @ Bar 9: Base=25006.50 Stop=25097.50 Risk=91.00
+[11/17/2025 11:20:00 AM] --- EvaluateLongEntry START ---
+[11/17/2025 11:20:00 AM] REJECT: Close <= EMA20 (24961.50 <= 25110.90)
+[11/17/2025 11:20:00 AM] --- EvaluateShortEntry START ---
+[11/17/2025 11:20:00 AM] >> CancelActivePullbackOrder(SHORT): Order=Short_PB33_5, State=Working
+[11/17/2025 11:20:00 AM] >> Clearing _activeShortPullbackOrder (cancelled: Short_PB33_5)
+[11/17/2025 11:20:00 AM] *** ORDER CANCELLED *** Short_PB33_5
+[11/17/2025 11:20:00 AM] >> ✗✗✗ CANCELLED: Short_PB33_5 (State was: Cancelled) ✗✗✗
+  Short_PB33_6: PB33 @ 24982.62 Qty=1 [STORED ORDER REFERENCE]
+[11/17/2025 11:20:00 AM] ✓ SHORT MC @ Bar 10: Base=24961.50 Stop=25025.50 Risk=64.00
+[11/17/2025 11:20:00 AM] >> Clearing _activeShortPullbackOrder (filled: Short_PB33_6)
+[11/17/2025 11:20:00 AM] FILLED: Short_PB33_6 @ 24982.50 | Risk=43.00 | Target=24939.50 (1R) | Stop=25025.50
+[11/17/2025 11:20:00 AM] *** ORDER CANCELLED *** Profit target
+[11/17/2025 11:20:00 AM] *** STOP LOSS HIT *** Stop loss @ 25025.50
+[11/17/2025 11:20:00 AM] === POSITION NOW FLAT === Avg=0.00
+[11/17/2025 11:20:00 AM] >> Active PB Orders BEFORE clear: Long=NULL, Short=NULL
+[11/17/2025 11:30:00 AM] --- EvaluateLongEntry START ---
+[11/17/2025 11:30:00 AM] REJECT: Close <= EMA20 (25070.00 <= 25107.00)
+[11/17/2025 11:30:00 AM] --- EvaluateShortEntry START ---
+[11/17/2025 11:30:00 AM] REJECT: Not a bear bar (Close=25070.00, Open=24961.00)
+[11/17/2025 11:40:00 AM] --- EvaluateLongEntry START ---
+[11/17/2025 11:40:00 AM] >> CancelActivePullbackOrder(LONG): No order to cancel (null)
+  Long_PB33_7: PB33 @ 25098.17 Qty=1 [STORED ORDER REFERENCE]
+[11/17/2025 11:40:00 AM] ✓ LONG MC @ Bar 12: Base=25114.75 Stop=25064.50 Risk=50.25
+[11/17/2025 11:40:00 AM] --- EvaluateShortEntry START ---
+[11/17/2025 11:40:00 AM] REJECT: Close >= EMA20 (25114.75 >= 25107.74)
+[11/17/2025 11:50:00 AM] --- EvaluateLongEntry START ---
+[11/17/2025 11:50:00 AM] >> CancelActivePullbackOrder(LONG): Order=Long_PB33_7, State=Working
+[11/17/2025 11:50:00 AM] >> Clearing _activeLongPullbackOrder (cancelled: Long_PB33_7)
+[11/17/2025 11:50:00 AM] *** ORDER CANCELLED *** Long_PB33_7
+[11/17/2025 11:50:00 AM] *** ORDER CANCELLED *** Close position
+[11/17/2025 11:50:00 AM] >> ✗✗✗ CANCELLED: Long_PB33_7 (State was: Cancelled) ✗✗✗
+  Long_PB33_8: PB33 @ 25137.63 Qty=1 [STORED ORDER REFERENCE]
+[11/17/2025 11:50:00 AM] ✓ LONG MC @ Bar 13: Base=25150.00 Stop=25112.50 Risk=37.50
+[11/17/2025 11:50:00 AM] --- EvaluateShortEntry START ---
+[11/17/2025 11:50:00 AM] REJECT: Close >= EMA20 (25150.00 >= 25111.77)
+[11/17/2025 12:00:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 12:00:00 PM] >> CancelActivePullbackOrder(LONG): Order=Long_PB33_8, State=Working
+[11/17/2025 12:00:00 PM] >> Clearing _activeLongPullbackOrder (cancelled: Long_PB33_8)
+[11/17/2025 12:00:00 PM] *** ORDER CANCELLED *** Long_PB33_8
+[11/17/2025 12:00:00 PM] *** ORDER CANCELLED *** Close position
+[11/17/2025 12:00:00 PM] >> ✗✗✗ CANCELLED: Long_PB33_8 (State was: Cancelled) ✗✗✗
+  Long_PB33_9: PB33 @ 25180.99 Qty=1 [STORED ORDER REFERENCE]
+[11/17/2025 12:00:00 PM] ✓ LONG MC @ Bar 14: Base=25196.75 Stop=25149.00 Risk=47.75
+[11/17/2025 12:00:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 12:00:00 PM] REJECT: Close >= EMA20 (25196.75 >= 25119.86)
+[11/17/2025 12:00:00 PM] === POSITION NOW FLAT === Avg=0.00
+[11/17/2025 12:00:00 PM] >> Active PB Orders BEFORE clear: Long=Long_PB33_9, Short=NULL
+[11/17/2025 12:10:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 12:10:00 PM] REJECT: Not a bull bar (Close=25180.75, Open=25196.25)
+[11/17/2025 12:10:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 12:10:00 PM] REJECT: Close >= EMA20 (25180.75 >= 25125.66)
+[11/17/2025 12:20:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 12:20:00 PM] REJECT: Not a bull bar (Close=25144.25, Open=25181.50)
+[11/17/2025 12:20:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 12:20:00 PM] REJECT: Close >= EMA20 (25144.25 >= 25127.43)
+[11/17/2025 12:30:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 12:30:00 PM] >> CancelActivePullbackOrder(LONG): No order to cancel (null)
+  Long_PB33_10: PB33 @ 25137.24 Qty=1 [STORED ORDER REFERENCE]
+[11/17/2025 12:30:00 PM] ✓ LONG MC @ Bar 17: Base=25144.25 Stop=25123.00 Risk=21.25
+[11/17/2025 12:30:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 12:30:00 PM] REJECT: Close >= EMA20 (25149.50 >= 25129.53)
+[11/17/2025 12:30:00 PM] >> Clearing _activeLongPullbackOrder (filled: Long_PB33_10)
+[11/17/2025 12:30:00 PM] FILLED: Long_PB33_10 @ 25137.25 | Risk=14.25 | Target=25151.50 (1R) | Stop=25123.00
+[11/17/2025 12:30:00 PM] *** ORDER CANCELLED *** Stop loss
+[11/17/2025 12:30:00 PM] *** PROFIT TARGET HIT *** Profit target @ 25151.75
+[11/17/2025 12:40:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 12:40:00 PM] REJECT: Close <= EMA20 (25111.25 <= 25127.79)
+[11/17/2025 12:40:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 12:40:00 PM] REJECT: No qualifying bear channel
+[11/17/2025 12:50:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 12:50:00 PM] REJECT: Close <= EMA20 (25068.75 <= 25122.17)
+[11/17/2025 12:50:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 12:50:00 PM] >> CancelActivePullbackOrder(SHORT): No order to cancel (null)
+  Short_PB33_11: PB33 @ 25128.99 Qty=1 [STORED ORDER REFERENCE]
+[11/17/2025 12:50:00 PM] ✓ SHORT MC @ Bar 19: Base=25111.25 Stop=25165.00 Risk=53.75
+[11/17/2025 1:00:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 1:00:00 PM] REJECT: Close <= EMA20 (25001.00 <= 25110.63)
+[11/17/2025 1:00:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 1:00:00 PM] >> CancelActivePullbackOrder(SHORT): Order=Short_PB33_11, State=Working
+[11/17/2025 1:00:00 PM] >> Clearing _activeShortPullbackOrder (cancelled: Short_PB33_11)
+[11/17/2025 1:00:00 PM] *** ORDER CANCELLED *** Short_PB33_11
+[11/17/2025 1:00:00 PM] *** ORDER CANCELLED *** Close position
+[11/17/2025 1:00:00 PM] >> ✗✗✗ CANCELLED: Short_PB33_11 (State was: Cancelled) ✗✗✗
+  Short_PB33_12: PB33 @ 25025.09 Qty=1 [STORED ORDER REFERENCE]
+[11/17/2025 1:00:00 PM] ✓ SHORT MC @ Bar 20: Base=25001.00 Stop=25074.00 Risk=73.00
+[11/17/2025 1:10:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 1:10:00 PM] REJECT: Close <= EMA20 (24971.25 <= 25097.35)
+[11/17/2025 1:10:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 1:10:00 PM] >> CancelActivePullbackOrder(SHORT): Order=Short_PB33_12, State=Working
+[11/17/2025 1:10:00 PM] >> Clearing _activeShortPullbackOrder (cancelled: Short_PB33_12)
+[11/17/2025 1:10:00 PM] *** ORDER CANCELLED *** Short_PB33_12
+[11/17/2025 1:10:00 PM] *** ORDER CANCELLED *** Close position
+[11/17/2025 1:10:00 PM] >> ✗✗✗ CANCELLED: Short_PB33_12 (State was: Cancelled) ✗✗✗
+  Short_PB33_13: PB33 @ 25025.09 Qty=1 [STORED ORDER REFERENCE]
+[11/17/2025 1:10:00 PM] ✓ SHORT MC @ Bar 21: Base=25001.00 Stop=25074.00 Risk=73.00
+[11/17/2025 1:20:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 1:20:00 PM] REJECT: Close <= EMA20 (24998.75 <= 25087.96)
+[11/17/2025 1:20:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 1:20:00 PM] REJECT: Not a bear bar (Close=24998.75, Open=24971.25)
+[11/17/2025 1:30:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 1:30:00 PM] REJECT: Close <= EMA20 (24982.25 <= 25077.89)
+[11/17/2025 1:30:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 1:30:00 PM] REJECT: No qualifying bear channel
+[11/17/2025 1:40:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 1:40:00 PM] REJECT: Close <= EMA20 (24976.00 <= 25068.19)
+[11/17/2025 1:40:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 1:40:00 PM] >> CancelActivePullbackOrder(SHORT): Order=Short_PB33_13, State=Working
+[11/17/2025 1:40:00 PM] >> Clearing _activeShortPullbackOrder (cancelled: Short_PB33_13)
+[11/17/2025 1:40:00 PM] *** ORDER CANCELLED *** Short_PB33_13
+[11/17/2025 1:40:00 PM] *** ORDER CANCELLED *** Close position
+[11/17/2025 1:40:00 PM] >> ✗✗✗ CANCELLED: Short_PB33_13 (State was: Cancelled) ✗✗✗
+  Short_PB33_14: PB33 @ 24993.31 Qty=1 [STORED ORDER REFERENCE]
+[11/17/2025 1:40:00 PM] ✓ SHORT MC @ Bar 24: Base=24982.25 Stop=25015.75 Risk=33.50
+[11/17/2025 1:40:00 PM] === POSITION NOW FLAT === Avg=0.00
+[11/17/2025 1:40:00 PM] >> Active PB Orders BEFORE clear: Long=NULL, Short=Short_PB33_14
+[11/17/2025 1:50:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 1:50:00 PM] REJECT: Close <= EMA20 (25012.00 <= 25062.84)
+[11/17/2025 1:50:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 1:50:00 PM] REJECT: Not a bear bar (Close=25012.00, Open=24976.50)
+[11/17/2025 2:00:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 2:00:00 PM] REJECT: Close <= EMA20 (24895.25 <= 25046.88)
+[11/17/2025 2:00:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 2:00:00 PM] >> CancelActivePullbackOrder(SHORT): No order to cancel (null)
+  Short_PB33_15: PB33 @ 24938.48 Qty=1 [STORED ORDER REFERENCE]
+[11/17/2025 2:00:00 PM] ✓ SHORT MC @ Bar 26: Base=24895.25 Stop=25026.25 Risk=131.00
+[11/17/2025 2:10:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 2:10:00 PM] REJECT: Close <= EMA20 (24894.25 <= 25032.34)
+[11/17/2025 2:10:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 2:10:00 PM] >> CancelActivePullbackOrder(SHORT): Order=Short_PB33_15, State=Working
+[11/17/2025 2:10:00 PM] >> Clearing _activeShortPullbackOrder (cancelled: Short_PB33_15)
+[11/17/2025 2:10:00 PM] *** ORDER CANCELLED *** Short_PB33_15
+[11/17/2025 2:10:00 PM] >> ✗✗✗ CANCELLED: Short_PB33_15 (State was: Cancelled) ✗✗✗
+  Short_PB33_16: PB33 @ 24938.48 Qty=1 [STORED ORDER REFERENCE]
+[11/17/2025 2:10:00 PM] ✓ SHORT MC @ Bar 27: Base=24895.25 Stop=25026.25 Risk=131.00
+[11/17/2025 2:20:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 2:20:00 PM] REJECT: Close <= EMA20 (24863.25 <= 25016.24)
+[11/17/2025 2:20:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 2:20:00 PM] REJECT: No qualifying bear channel
+[11/17/2025 2:30:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 2:30:00 PM] REJECT: Close <= EMA20 (24867.50 <= 25002.07)
+[11/17/2025 2:30:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 2:30:00 PM] REJECT: Not a bear bar (Close=24867.50, Open=24862.75)
+[11/17/2025 2:40:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 2:40:00 PM] REJECT: Close <= EMA20 (24793.00 <= 24982.16)
+[11/17/2025 2:40:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 2:40:00 PM] REJECT: No qualifying bear channel
+[11/17/2025 2:50:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 2:50:00 PM] REJECT: Close <= EMA20 (24802.50 <= 24965.05)
+[11/17/2025 2:50:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 2:50:00 PM] REJECT: Not a bear bar (Close=24802.50, Open=24792.25)
+[11/17/2025 3:00:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 3:00:00 PM] REJECT: Close <= EMA20 (24756.25 <= 24945.16)
+[11/17/2025 3:00:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 3:00:00 PM] >> CancelActivePullbackOrder(SHORT): Order=Short_PB33_16, State=Working
+[11/17/2025 3:00:00 PM] >> Clearing _activeShortPullbackOrder (cancelled: Short_PB33_16)
+[11/17/2025 3:00:00 PM] *** ORDER CANCELLED *** Short_PB33_16
+[11/17/2025 3:00:00 PM] >> ✗✗✗ CANCELLED: Short_PB33_16 (State was: Cancelled) ✗✗✗
+  Short_PB33_17: PB33 @ 24776.38 Qty=1 [STORED ORDER REFERENCE]
+[11/17/2025 3:00:00 PM] ✓ SHORT MC @ Bar 32: Base=24756.25 Stop=24817.25 Risk=61.00
+[11/17/2025 3:00:00 PM] >> Clearing _activeShortPullbackOrder (filled: Short_PB33_17)
+[11/17/2025 3:00:00 PM] FILLED: Short_PB33_17 @ 24776.50 | Risk=40.75 | Target=24735.75 (1R) | Stop=24817.25
+[11/17/2025 3:10:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 3:10:00 PM] REJECT: Close <= EMA20 (24763.50 <= 24927.86)
+[11/17/2025 3:10:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 3:10:00 PM] REJECT: Not a bear bar (Close=24763.50, Open=24756.25)
+[11/17/2025 3:20:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 3:20:00 PM] REJECT: Close <= EMA20 (24769.50 <= 24912.78)
+[11/17/2025 3:20:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 3:20:00 PM] REJECT: Not a bear bar (Close=24769.50, Open=24762.75)
+[11/17/2025 3:30:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 3:30:00 PM] REJECT: Close <= EMA20 (24788.75 <= 24900.97)
+[11/17/2025 3:30:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 3:30:00 PM] REJECT: Not a bear bar (Close=24788.75, Open=24769.25)
+[11/17/2025 3:40:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 3:40:00 PM] REJECT: Close <= EMA20 (24765.75 <= 24888.09)
+[11/17/2025 3:40:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 3:40:00 PM] REJECT: No qualifying bear channel
+[11/17/2025 3:40:00 PM] *** ORDER CANCELLED *** Profit target
+[11/17/2025 3:40:00 PM] *** STOP LOSS HIT *** Stop loss @ 24817.25
+[11/17/2025 3:50:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 3:50:00 PM] REJECT: Close <= EMA20 (24845.75 <= 24884.06)
+[11/17/2025 3:50:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 3:50:00 PM] REJECT: Not a bear bar (Close=24845.75, Open=24766.25)
+[11/17/2025 4:00:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 4:00:00 PM] >> CancelActivePullbackOrder(LONG): No order to cancel (null)
+  Long_PB33_18: PB33 @ 24865.23 Qty=1 [STORED ORDER REFERENCE]
+[11/17/2025 4:00:00 PM] ✓ LONG MC @ Bar 38: Base=24887.50 Stop=24820.00 Risk=67.50
+[11/17/2025 4:00:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 4:00:00 PM] REJECT: Close >= EMA20 (24887.50 >= 24884.39)
+[11/17/2025 4:10:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 4:10:00 PM] >> CancelActivePullbackOrder(LONG): Order=Long_PB33_18, State=Working
+[11/17/2025 4:10:00 PM] >> Clearing _activeLongPullbackOrder (cancelled: Long_PB33_18)
+[11/17/2025 4:10:00 PM] *** ORDER CANCELLED *** Long_PB33_18
+[11/17/2025 4:10:00 PM] *** ORDER CANCELLED *** Close position
+[11/17/2025 4:10:00 PM] >> ✗✗✗ CANCELLED: Long_PB33_18 (State was: Cancelled) ✗✗✗
+  Long_PB33_19: PB33 @ 24899.32 Qty=1 [STORED ORDER REFERENCE]
+[11/17/2025 4:10:00 PM] ✓ LONG MC @ Bar 39: Base=24906.25 Stop=24885.25 Risk=21.00
+[11/17/2025 4:10:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 4:10:00 PM] REJECT: Close >= EMA20 (24906.25 >= 24886.47)
+[11/17/2025 4:15:00 PM] --- EvaluateLongEntry START ---
+[11/17/2025 4:15:00 PM] >> CancelActivePullbackOrder(LONG): Order=Long_PB33_19, State=Working
+[11/17/2025 4:15:00 PM] >> Clearing _activeLongPullbackOrder (cancelled: Long_PB33_19)
+[11/17/2025 4:15:00 PM] *** ORDER CANCELLED *** Long_PB33_19
+[11/17/2025 4:15:00 PM] *** ORDER CANCELLED *** Close position
+[11/17/2025 4:15:00 PM] >> ✗✗✗ CANCELLED: Long_PB33_19 (State was: Cancelled) ✗✗✗
+  Long_PB33_20: PB33 @ 24915.80 Qty=1 [STORED ORDER REFERENCE]
+[11/17/2025 4:15:00 PM] ✓ LONG MC @ Bar 40: Base=24920.75 Stop=24905.75 Risk=15.00
+[11/17/2025 4:15:00 PM] --- EvaluateShortEntry START ---
+[11/17/2025 4:15:00 PM] REJECT: Close >= EMA20 (24920.75 >= 24889.73)
+[11/17/2025 4:15:00 PM] *** ORDER CANCELLED *** Close position
+[11/17/2025 4:15:00 PM] >> Clearing _activeLongPullbackOrder (cancelled: Long_PB33_20)
+[11/17/2025 4:15:00 PM] *** ORDER CANCELLED *** Long_PB33_20
+[11/17/2025 4:15:00 PM] === POSITION NOW FLAT === Avg=0.00
+[11/17/2025 4:15:00 PM] >> Active PB Orders BEFORE clear: Long=NULL, Short=NULL
+[11/18/2025 9:40:00 AM] --- EvaluateLongEntry START ---
+[11/18/2025 9:40:00 AM] REJECT: Close <= EMA20 (24738.75 <= 24875.35)
+[11/18/2025 9:40:00 AM] --- EvaluateShortEntry START ---
+[11/18/2025 9:40:00 AM] REJECT: Not a bear bar (Close=24738.75, Open=24718.25)
+[11/18/2025 9:50:00 AM] --- EvaluateLongEntry START ---
+[11/18/2025 9:50:00 AM] REJECT: Close <= EMA20 (24623.00 <= 24851.32)
+[11/18/2025 9:50:00 AM] --- EvaluateShortEntry START ---
+[11/18/2025 9:50:00 AM] >> CancelActivePullbackOrder(SHORT): No order to cancel (null)
+  Short_PB33_21: PB33 @ 24669.70 Qty=1 [STORED ORDER REFERENCE]
+[11/18/2025 9:50:00 AM] ✓ SHORT MC @ Bar 42: Base=24623.00 Stop=24764.50 Risk=141.50
+[11/18/2025 10:00:00 AM] --- EvaluateLongEntry START ---
+[11/18/2025 10:00:00 AM] REJECT: Close <= EMA20 (24522.50 <= 24820.00)
+[11/18/2025 10:00:00 AM] --- EvaluateShortEntry START ---
+[11/18/2025 10:00:00 AM] >> CancelActivePullbackOrder(SHORT): Order=Short_PB33_21, State=Working
+[11/18/2025 10:00:00 AM] >> Clearing _activeShortPullbackOrder (cancelled: Short_PB33_21)
+[11/18/2025 10:00:00 AM] *** ORDER CANCELLED *** Short_PB33_21
+[11/18/2025 10:00:00 AM] >> ✗✗✗ CANCELLED: Short_PB33_21 (State was: Cancelled) ✗✗✗
+  Short_PB33_22: PB33 @ 24562.60 Qty=1 [STORED ORDER REFERENCE]
+[11/18/2025 10:00:00 AM] ✓ SHORT MC @ Bar 43: Base=24522.50 Stop=24644.00 Risk=121.50
+[11/18/2025 10:10:00 AM] --- EvaluateLongEntry START ---
+[11/18/2025 10:10:00 AM] REJECT: Close <= EMA20 (24543.25 <= 24793.65)
+[11/18/2025 10:10:00 AM] --- EvaluateShortEntry START ---
+[11/18/2025 10:10:00 AM] REJECT: Not a bear bar (Close=24543.25, Open=24521.75)
+[11/18/2025 10:10:00 AM] >> Clearing _activeShortPullbackOrder (filled: Short_PB33_22)
+[11/18/2025 10:10:00 AM] FILLED: Short_PB33_22 @ 24562.50 | Risk=81.50 | Target=24481.00 (1R) | Stop=24644.00
+[11/18/2025 10:10:00 AM] *** ORDER CANCELLED *** Stop loss
+[11/18/2025 10:10:00 AM] *** PROFIT TARGET HIT *** Profit target @ 24481.00
+[11/18/2025 10:10:00 AM] === POSITION NOW FLAT === Avg=0.00
+[11/18/2025 10:10:00 AM] >> Active PB Orders BEFORE clear: Long=NULL, Short=NULL
+[11/18/2025 10:20:00 AM] --- EvaluateLongEntry START ---
+[11/18/2025 10:20:00 AM] REJECT: Close <= EMA20 (24497.00 <= 24765.39)
+[11/18/2025 10:20:00 AM] --- EvaluateShortEntry START ---
+[11/18/2025 10:20:00 AM] REJECT: No qualifying bear channel
+[11/18/2025 10:30:00 AM] --- EvaluateLongEntry START ---
+[11/18/2025 10:30:00 AM] REJECT: Close <= EMA20 (24545.75 <= 24744.48)
+[11/18/2025 10:30:00 AM] --- EvaluateShortEntry START ---
+[11/18/2025 10:30:00 AM] REJECT: Not a bear bar (Close=24545.75, Open=24497.00)
+[11/18/2025 10:40:00 AM] --- EvaluateLongEntry START ---
+[11/18/2025 10:40:00 AM] REJECT: Close <= EMA20 (24500.75 <= 24721.26)
+[11/18/2025 10:40:00 AM] --- EvaluateShortEntry START ---
+[11/18/2025 10:40:00 AM] >> CancelActivePullbackOrder(SHORT): No order to cancel (null)
+  Short_PB33_23: PB33 @ 24568.19 Qty=1 [STORED ORDER REFERENCE]
+[11/18/2025 10:40:00 AM] ✓ SHORT MC @ Bar 47: Base=24545.75 Stop=24613.75 Risk=68.00
+[11/18/2025 10:50:00 AM] --- EvaluateLongEntry START ---
+[11/18/2025 10:50:00 AM] REJECT: Close <= EMA20 (24481.75 <= 24698.45)
+[11/18/2025 10:50:00 AM] --- EvaluateShortEntry START ---
+[11/18/2025 10:50:00 AM] >> CancelActivePullbackOrder(SHORT): Order=Short_PB33_23, State=Working
+[11/18/2025 10:50:00 AM] >> Clearing _activeShortPullbackOrder (cancelled: Short_PB33_23)
+[11/18/2025 10:50:00 AM] *** ORDER CANCELLED *** Short_PB33_23
+[11/18/2025 10:50:00 AM] >> ✗✗✗ CANCELLED: Short_PB33_23 (State was: Cancelled) ✗✗✗
+  Short_PB33_24: PB33 @ 24501.14 Qty=1 [STORED ORDER REFERENCE]
+[11/18/2025 10:50:00 AM] ✓ SHORT MC @ Bar 48: Base=24481.75 Stop=24540.50 Risk=58.75
+[11/18/2025 10:50:00 AM] >> Clearing _activeShortPullbackOrder (filled: Short_PB33_24)
+[11/18/2025 10:50:00 AM] FILLED: Short_PB33_24 @ 24501.25 | Risk=39.25 | Target=24462.00 (1R) | Stop=24540.50
+[11/18/2025 10:50:00 AM] *** ORDER CANCELLED *** Stop loss
+[11/18/2025 10:50:00 AM] *** PROFIT TARGET HIT *** Profit target @ 24462.00
+[11/18/2025 10:50:00 AM] === POSITION NOW FLAT === Avg=0.00
+[11/18/2025 10:50:00 AM] >> Active PB Orders BEFORE clear: Long=NULL, Short=NULL
+[11/18/2025 11:00:00 AM] --- EvaluateLongEntry START ---
+[11/18/2025 11:00:00 AM] REJECT: Close <= EMA20 (24458.50 <= 24675.60)
+[11/18/2025 11:00:00 AM] --- EvaluateShortEntry START ---
+[11/18/2025 11:00:00 AM] >> CancelActivePullbackOrder(SHORT): No order to cancel (null)
+  Short_PB33_25: PB33 @ 24482.10 Qty=1 [STORED ORDER REFERENCE]
+[11/18/2025 11:00:00 AM] ✓ SHORT MC @ Bar 49: Base=24458.50 Stop=24530.00 Risk=71.50
+[11/18/2025 11:00:00 AM] >> Clearing _activeShortPullbackOrder (filled: Short_PB33_25)
+[11/18/2025 11:00:00 AM] FILLED: Short_PB33_25 @ 24482.00 | Risk=48.00 | Target=24434.00 (1R) | Stop=24530.00
+[11/18/2025 11:10:00 AM] --- EvaluateLongEntry START ---
+[11/18/2025 11:10:00 AM] REJECT: Close <= EMA20 (24508.50 <= 24659.69)
+[11/18/2025 11:10:00 AM] --- EvaluateShortEntry START ---
+[11/18/2025 11:10:00 AM] REJECT: Not a bear bar (Close=24508.50, Open=24458.75)
+[11/18/2025 11:10:00 AM] *** ORDER CANCELLED *** Profit target
+[11/18/2025 11:10:00 AM] *** STOP LOSS HIT *** Stop loss @ 24530.00
+[11/18/2025 11:10:00 AM] === POSITION NOW FLAT === Avg=0.00
+[11/18/2025 11:10:00 AM] >> Active PB Orders BEFORE clear: Long=NULL, Short=NULL
+[11/18/2025 11:20:00 AM] --- EvaluateLongEntry START ---
+[11/18/2025 11:20:00 AM] REJECT: Close <= EMA20 (24549.25 <= 24649.17)
+[11/18/2025 11:20:00 AM] --- EvaluateShortEntry START ---
+[11/18/2025 11:20:00 AM] REJECT: Not a bear bar (Close=24549.25, Open=24509.25)
+[11/18/2025 11:30:00 AM] --- EvaluateLongEntry START ---
+[11/18/2025 11:30:00 AM] REJECT: Close <= EMA20 (24647.25 <= 24648.99)
+[11/18/2025 11:30:00 AM] --- EvaluateShortEntry START ---
+[11/18/2025 11:30:00 AM] REJECT: Not a bear bar (Close=24647.25, Open=24549.00)
+[11/18/2025 11:40:00 AM] --- EvaluateLongEntry START ---
+[11/18/2025 11:40:00 AM] REJECT: Close <= EMA20 (24642.00 <= 24648.32)
+[11/18/2025 11:40:00 AM] --- EvaluateShortEntry START ---
+[11/18/2025 11:40:00 AM] REJECT: No qualifying bear channel
+[11/18/2025 11:50:00 AM] --- EvaluateLongEntry START ---
+[11/18/2025 11:50:00 AM] REJECT: Close <= EMA20 (24644.25 <= 24647.93)
+[11/18/2025 11:50:00 AM] --- EvaluateShortEntry START ---
+[11/18/2025 11:50:00 AM] REJECT: Not a bear bar (Close=24644.25, Open=24640.75)
+[11/18/2025 12:00:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 12:00:00 PM] >> CancelActivePullbackOrder(LONG): No order to cancel (null)
+  Long_PB33_26: PB33 @ 24635.42 Qty=1 [STORED ORDER REFERENCE]
+[11/18/2025 12:00:00 PM] ✓ LONG MC @ Bar 55: Base=24644.25 Stop=24617.50 Risk=26.75
+[11/18/2025 12:00:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 12:00:00 PM] REJECT: Close >= EMA20 (24653.25 >= 24648.44)
+[11/18/2025 12:00:00 PM] >> Clearing _activeLongPullbackOrder (filled: Long_PB33_26)
+[11/18/2025 12:00:00 PM] FILLED: Long_PB33_26 @ 24635.50 | Risk=18.00 | Target=24653.50 (1R) | Stop=24617.50
+[11/18/2025 12:00:00 PM] *** ORDER CANCELLED *** Profit target
+[11/18/2025 12:00:00 PM] *** STOP LOSS HIT *** Stop loss @ 24617.50
+[11/18/2025 12:00:00 PM] === POSITION NOW FLAT === Avg=0.00
+[11/18/2025 12:00:00 PM] >> Active PB Orders BEFORE clear: Long=NULL, Short=NULL
+[11/18/2025 12:10:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 12:10:00 PM] REJECT: Close <= EMA20 (24625.25 <= 24646.23)
+[11/18/2025 12:10:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 12:10:00 PM] REJECT: No qualifying bear channel
+[11/18/2025 12:20:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 12:20:00 PM] REJECT: Close <= EMA20 (24588.25 <= 24640.71)
+[11/18/2025 12:20:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 12:20:00 PM] >> CancelActivePullbackOrder(SHORT): No order to cancel (null)
+  Short_PB33_27: PB33 @ 24607.39 Qty=1 [STORED ORDER REFERENCE]
+[11/18/2025 12:20:00 PM] ✓ SHORT MC @ Bar 57: Base=24588.25 Stop=24646.25 Risk=58.00
+[11/18/2025 12:20:00 PM] >> Clearing _activeShortPullbackOrder (filled: Short_PB33_27)
+[11/18/2025 12:20:00 PM] FILLED: Short_PB33_27 @ 24607.50 | Risk=38.75 | Target=24568.75 (1R) | Stop=24646.25
+[11/18/2025 12:20:00 PM] *** ORDER CANCELLED *** Stop loss
+[11/18/2025 12:20:00 PM] *** PROFIT TARGET HIT *** Profit target @ 24568.75
+[11/18/2025 12:20:00 PM] === POSITION NOW FLAT === Avg=0.00
+[11/18/2025 12:20:00 PM] >> Active PB Orders BEFORE clear: Long=NULL, Short=NULL
+[11/18/2025 12:30:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 12:30:00 PM] REJECT: Close <= EMA20 (24535.25 <= 24630.66)
+[11/18/2025 12:30:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 12:30:00 PM] >> CancelActivePullbackOrder(SHORT): No order to cancel (null)
+  Short_PB33_28: PB33 @ 24569.24 Qty=1 [STORED ORDER REFERENCE]
+[11/18/2025 12:30:00 PM] ✓ SHORT MC @ Bar 58: Base=24535.25 Stop=24638.25 Risk=103.00
+[11/18/2025 12:30:00 PM] >> Clearing _activeShortPullbackOrder (filled: Short_PB33_28)
+[11/18/2025 12:30:00 PM] FILLED: Short_PB33_28 @ 24569.25 | Risk=69.00 | Target=24500.25 (1R) | Stop=24638.25
+[11/18/2025 12:30:00 PM] *** ORDER CANCELLED *** Profit target
+[11/18/2025 12:30:00 PM] *** STOP LOSS HIT *** Stop loss @ 24638.25
+[11/18/2025 12:30:00 PM] === POSITION NOW FLAT === Avg=0.00
+[11/18/2025 12:30:00 PM] >> Active PB Orders BEFORE clear: Long=NULL, Short=NULL
+[11/18/2025 12:40:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 12:40:00 PM] REJECT: No qualifying bull channel
+[11/18/2025 12:40:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 12:40:00 PM] REJECT: Close >= EMA20 (24638.50 >= 24631.41)
+[11/18/2025 12:50:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 12:50:00 PM] >> CancelActivePullbackOrder(LONG): No order to cancel (null)
+  Long_PB33_29: PB33 @ 24695.27 Qty=1 [STORED ORDER REFERENCE]
+[11/18/2025 12:50:00 PM] ✓ LONG MC @ Bar 60: Base=24722.25 Stop=24640.50 Risk=81.75
+[11/18/2025 12:50:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 12:50:00 PM] REJECT: Close >= EMA20 (24722.25 >= 24640.06)
+[11/18/2025 12:50:00 PM] >> Clearing _activeLongPullbackOrder (filled: Long_PB33_29)
+[11/18/2025 12:50:00 PM] FILLED: Long_PB33_29 @ 24695.25 | Risk=54.75 | Target=24750.00 (1R) | Stop=24640.50
+[11/18/2025 12:50:00 PM] *** ORDER CANCELLED *** Stop loss
+[11/18/2025 12:50:00 PM] *** PROFIT TARGET HIT *** Profit target @ 24750.00
+[11/18/2025 12:50:00 PM] === POSITION NOW FLAT === Avg=0.00
+[11/18/2025 12:50:00 PM] >> Active PB Orders BEFORE clear: Long=NULL, Short=NULL
+[11/18/2025 1:00:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 1:00:00 PM] >> CancelActivePullbackOrder(LONG): No order to cancel (null)
+  Long_PB33_30: PB33 @ 24695.27 Qty=1 [STORED ORDER REFERENCE]
+[11/18/2025 1:00:00 PM] ✓ LONG MC @ Bar 61: Base=24722.25 Stop=24640.50 Risk=81.75
+[11/18/2025 1:00:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 1:00:00 PM] REJECT: Close >= EMA20 (24752.75 >= 24650.79)
+[11/18/2025 1:10:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 1:10:00 PM] >> CancelActivePullbackOrder(LONG): Order=Long_PB33_30, State=Working
+[11/18/2025 1:10:00 PM] >> Clearing _activeLongPullbackOrder (cancelled: Long_PB33_30)
+[11/18/2025 1:10:00 PM] *** ORDER CANCELLED *** Long_PB33_30
+[11/18/2025 1:10:00 PM] >> ✗✗✗ CANCELLED: Long_PB33_30 (State was: Cancelled) ✗✗✗
+  Long_PB33_31: PB33 @ 24695.27 Qty=1 [STORED ORDER REFERENCE]
+[11/18/2025 1:10:00 PM] ✓ LONG MC @ Bar 62: Base=24722.25 Stop=24640.50 Risk=81.75
+[11/18/2025 1:10:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 1:10:00 PM] REJECT: Close >= EMA20 (24765.25 >= 24661.70)
+[11/18/2025 1:20:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 1:20:00 PM] REJECT: Not a bull bar (Close=24763.50, Open=24766.00)
+[11/18/2025 1:20:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 1:20:00 PM] REJECT: Close >= EMA20 (24763.50 >= 24671.39)
+[11/18/2025 1:30:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 1:30:00 PM] REJECT: Not a bull bar (Close=24728.25, Open=24767.00)
+[11/18/2025 1:30:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 1:30:00 PM] REJECT: Close >= EMA20 (24728.25 >= 24676.81)
+[11/18/2025 1:40:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 1:40:00 PM] REJECT: No qualifying bull channel
+[11/18/2025 1:40:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 1:40:00 PM] REJECT: Close >= EMA20 (24753.75 >= 24684.13)
+[11/18/2025 1:50:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 1:50:00 PM] >> CancelActivePullbackOrder(LONG): Order=Long_PB33_31, State=Working
+[11/18/2025 1:50:00 PM] >> Clearing _activeLongPullbackOrder (cancelled: Long_PB33_31)
+[11/18/2025 1:50:00 PM] *** ORDER CANCELLED *** Long_PB33_31
+[11/18/2025 1:50:00 PM] >> ✗✗✗ CANCELLED: Long_PB33_31 (State was: Cancelled) ✗✗✗
+  Long_PB33_32: PB33 @ 24740.47 Qty=1 [STORED ORDER REFERENCE]
+[11/18/2025 1:50:00 PM] ✓ LONG MC @ Bar 66: Base=24753.75 Stop=24713.50 Risk=40.25
+[11/18/2025 1:50:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 1:50:00 PM] REJECT: Close >= EMA20 (24769.50 >= 24692.26)
+[11/18/2025 1:50:00 PM] >> Clearing _activeLongPullbackOrder (filled: Long_PB33_32)
+[11/18/2025 1:50:00 PM] FILLED: Long_PB33_32 @ 24740.50 | Risk=27.00 | Target=24767.50 (1R) | Stop=24713.50
+[11/18/2025 1:50:00 PM] *** ORDER CANCELLED *** Profit target
+[11/18/2025 1:50:00 PM] *** STOP LOSS HIT *** Stop loss @ 24713.50
+[11/18/2025 1:50:00 PM] === POSITION NOW FLAT === Avg=0.00
+[11/18/2025 1:50:00 PM] >> Active PB Orders BEFORE clear: Long=NULL, Short=NULL
+[11/18/2025 2:00:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 2:00:00 PM] REJECT: Not a bull bar (Close=24710.25, Open=24769.25)
+[11/18/2025 2:00:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 2:00:00 PM] REJECT: Close >= EMA20 (24710.25 >= 24693.98)
+[11/18/2025 2:10:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 2:10:00 PM] >> CancelActivePullbackOrder(LONG): No order to cancel (null)
+  Long_PB33_33: PB33 @ 24733.49 Qty=1 [STORED ORDER REFERENCE]
+[11/18/2025 2:10:00 PM] ✓ LONG MC @ Bar 68: Base=24749.00 Stop=24702.00 Risk=47.00
+[11/18/2025 2:10:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 2:10:00 PM] REJECT: Close >= EMA20 (24749.00 >= 24699.22)
+[11/18/2025 2:10:00 PM] >> Clearing _activeLongPullbackOrder (filled: Long_PB33_33)
+[11/18/2025 2:10:00 PM] FILLED: Long_PB33_33 @ 24733.50 | Risk=31.50 | Target=24765.00 (1R) | Stop=24702.00
+[11/18/2025 2:10:00 PM] *** ORDER CANCELLED *** Stop loss
+[11/18/2025 2:10:00 PM] *** PROFIT TARGET HIT *** Profit target @ 24765.00
+[11/18/2025 2:10:00 PM] === POSITION NOW FLAT === Avg=0.00
+[11/18/2025 2:10:00 PM] >> Active PB Orders BEFORE clear: Long=NULL, Short=NULL
+[11/18/2025 2:20:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 2:20:00 PM] >> CancelActivePullbackOrder(LONG): No order to cancel (null)
+  Long_PB33_34: PB33 @ 24741.43 Qty=1 [STORED ORDER REFERENCE]
+[11/18/2025 2:20:00 PM] ✓ LONG MC @ Bar 69: Base=24759.25 Stop=24705.25 Risk=54.00
+[11/18/2025 2:20:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 2:20:00 PM] REJECT: Close >= EMA20 (24759.25 >= 24704.93)
+[11/18/2025 2:20:00 PM] >> Clearing _activeLongPullbackOrder (filled: Long_PB33_34)
+[11/18/2025 2:20:00 PM] FILLED: Long_PB33_34 @ 24741.50 | Risk=36.25 | Target=24777.75 (1R) | Stop=24705.25
+[11/18/2025 2:20:00 PM] *** ORDER CANCELLED *** Profit target
+[11/18/2025 2:20:00 PM] *** STOP LOSS HIT *** Stop loss @ 24705.25
+[11/18/2025 2:20:00 PM] === POSITION NOW FLAT === Avg=0.00
+[11/18/2025 2:20:00 PM] >> Active PB Orders BEFORE clear: Long=NULL, Short=NULL
+[11/18/2025 2:30:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 2:30:00 PM] REJECT: Not a bull bar (Close=24711.50, Open=24759.00)
+[11/18/2025 2:30:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 2:30:00 PM] REJECT: Close >= EMA20 (24711.50 >= 24705.56)
+[11/18/2025 2:40:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 2:40:00 PM] REJECT: No qualifying bull channel
+[11/18/2025 2:40:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 2:40:00 PM] REJECT: Close >= EMA20 (24795.25 >= 24714.10)
+[11/18/2025 2:50:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 2:50:00 PM] REJECT: Not a bull bar (Close=24771.25, Open=24795.00)
+[11/18/2025 2:50:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 2:50:00 PM] REJECT: Close >= EMA20 (24771.25 >= 24719.54)
+[11/18/2025 3:00:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 3:00:00 PM] REJECT: No qualifying bull channel
+[11/18/2025 3:00:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 3:00:00 PM] REJECT: Close >= EMA20 (24775.50 >= 24724.87)
+[11/18/2025 3:10:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 3:10:00 PM] REJECT: Close <= EMA20 (24720.75 <= 24724.48)
+[11/18/2025 3:10:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 3:10:00 PM] REJECT: No qualifying bear channel
+[11/18/2025 3:20:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 3:20:00 PM] REJECT: Close <= EMA20 (24709.00 <= 24723.01)
+[11/18/2025 3:20:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 3:20:00 PM] >> CancelActivePullbackOrder(SHORT): No order to cancel (null)
+  Short_PB33_35: PB33 @ 24721.54 Qty=1 [STORED ORDER REFERENCE]
+[11/18/2025 3:20:00 PM] ✓ SHORT MC @ Bar 75: Base=24709.00 Stop=24747.00 Risk=38.00
+[11/18/2025 3:20:00 PM] >> Clearing _activeShortPullbackOrder (filled: Short_PB33_35)
+[11/18/2025 3:20:00 PM] FILLED: Short_PB33_35 @ 24721.50 | Risk=25.50 | Target=24696.00 (1R) | Stop=24747.00
+[11/18/2025 3:20:00 PM] *** ORDER CANCELLED *** Stop loss
+[11/18/2025 3:20:00 PM] *** PROFIT TARGET HIT *** Profit target @ 24696.00
+[11/18/2025 3:20:00 PM] === POSITION NOW FLAT === Avg=0.00
+[11/18/2025 3:20:00 PM] >> Active PB Orders BEFORE clear: Long=NULL, Short=NULL
+[11/18/2025 3:30:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 3:30:00 PM] REJECT: Close <= EMA20 (24694.75 <= 24720.32)
+[11/18/2025 3:30:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 3:30:00 PM] >> CancelActivePullbackOrder(SHORT): No order to cancel (null)
+  Short_PB33_36: PB33 @ 24721.54 Qty=1 [STORED ORDER REFERENCE]
+[11/18/2025 3:30:00 PM] ✓ SHORT MC @ Bar 76: Base=24709.00 Stop=24747.00 Risk=38.00
+[11/18/2025 3:40:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 3:40:00 PM] REJECT: Close <= EMA20 (24682.75 <= 24716.74)
+[11/18/2025 3:40:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 3:40:00 PM] >> CancelActivePullbackOrder(SHORT): Order=Short_PB33_36, State=Working
+[11/18/2025 3:40:00 PM] >> Clearing _activeShortPullbackOrder (cancelled: Short_PB33_36)
+[11/18/2025 3:40:00 PM] *** ORDER CANCELLED *** Short_PB33_36
+[11/18/2025 3:40:00 PM] >> ✗✗✗ CANCELLED: Short_PB33_36 (State was: Cancelled) ✗✗✗
+  Short_PB33_37: PB33 @ 24721.54 Qty=1 [STORED ORDER REFERENCE]
+[11/18/2025 3:40:00 PM] ✓ SHORT MC @ Bar 77: Base=24709.00 Stop=24747.00 Risk=38.00
+[11/18/2025 3:50:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 3:50:00 PM] REJECT: Close <= EMA20 (24625.25 <= 24708.02)
+[11/18/2025 3:50:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 3:50:00 PM] >> CancelActivePullbackOrder(SHORT): Order=Short_PB33_37, State=Working
+[11/18/2025 3:50:00 PM] >> Clearing _activeShortPullbackOrder (cancelled: Short_PB33_37)
+[11/18/2025 3:50:00 PM] *** ORDER CANCELLED *** Short_PB33_37
+[11/18/2025 3:50:00 PM] >> ✗✗✗ CANCELLED: Short_PB33_37 (State was: Cancelled) ✗✗✗
+  Short_PB33_38: PB33 @ 24647.77 Qty=1 [STORED ORDER REFERENCE]
+[11/18/2025 3:50:00 PM] ✓ SHORT MC @ Bar 78: Base=24625.25 Stop=24693.50 Risk=68.25
+[11/18/2025 3:50:00 PM] >> Clearing _activeShortPullbackOrder (filled: Short_PB33_38)
+[11/18/2025 3:50:00 PM] FILLED: Short_PB33_38 @ 24647.75 | Risk=45.75 | Target=24602.00 (1R) | Stop=24693.50
+[11/18/2025 3:50:00 PM] *** ORDER CANCELLED *** Stop loss
+[11/18/2025 3:50:00 PM] *** PROFIT TARGET HIT *** Profit target @ 24602.00
+[11/18/2025 3:50:00 PM] === POSITION NOW FLAT === Avg=0.00
+[11/18/2025 3:50:00 PM] >> Active PB Orders BEFORE clear: Long=NULL, Short=NULL
+[11/18/2025 4:00:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 4:00:00 PM] REJECT: Close <= EMA20 (24581.50 <= 24695.97)
+[11/18/2025 4:00:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 4:00:00 PM] >> CancelActivePullbackOrder(SHORT): No order to cancel (null)
+  Short_PB33_39: PB33 @ 24617.47 Qty=1 [STORED ORDER REFERENCE]
+[11/18/2025 4:00:00 PM] ✓ SHORT MC @ Bar 79: Base=24581.50 Stop=24690.50 Risk=109.00
+[11/18/2025 4:10:00 PM] --- EvaluateLongEntry START ---
+[11/18/2025 4:10:00 PM] REJECT: Close <= EMA20 (24556.75 <= 24682.72)
+[11/18/2025 4:10:00 PM] --- EvaluateShortEntry START ---
+[11/18/2025 4:10:00 PM] >> CancelActivePullbackOrder(SHORT): Order=Short_PB33_39, State=Working
+[11/18/2025 4:10:00 PM] >> Clearing _activeShortPullbackOrder (cancelled: Short_PB33_39)
+[11/18/2025 4:10:00 PM] *** ORDER CANCELLED *** Short_PB33_39
+[11/18/2025 4:10:00 PM] >> ✗✗✗ CANCELLED: Short_PB33_39 (State was: Cancelled) ✗✗✗
+  Short_PB33_40: PB33 @ 24617.47 Qty=1 [STORED ORDER REFERENCE]
+[11/18/2025 4:10:00 PM] ✓ SHORT MC @ Bar 80: Base=24581.50 Stop=24690.50 Risk=109.00
+
+=== Strategy Terminated ===
