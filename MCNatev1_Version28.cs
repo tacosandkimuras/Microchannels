@@ -99,6 +99,10 @@ namespace NinjaTrader.NinjaScript.Strategies
         // Track the CURRENT active pullback ORDER OBJECTS (not signal names)
         private Order _activeLongPullbackOrder;
         private Order _activeShortPullbackOrder;
+        
+        // Track signal names to identify orders even if Order reference is lost
+        private string _activeLongPullbackSignal;
+        private string _activeShortPullbackSignal;
         #endregion
 
         #region Parameters
@@ -261,7 +265,7 @@ namespace NinjaTrader.NinjaScript.Strategies
                 TpRiskMultiplier = 2.0;
                 MinRiskPoints = 5.0;
                 MaxRiskPoints = 500.0;
-                StrategyVersion = "MC-Natev1.19-OrderObjectTracking";
+                StrategyVersion = "MC-Natev1.20-EnhancedOrderCancellation";
                 MicroChannelPurity = false;
                 StrongCloseFraction = 0.70;
                 
@@ -423,38 +427,69 @@ namespace NinjaTrader.NinjaScript.Strategies
         private void CancelActivePullbackOrder(bool isLong)
         {
             Order activeOrder = isLong ? _activeLongPullbackOrder : _activeShortPullbackOrder;
+            string activeSignal = isLong ? _activeLongPullbackSignal : _activeShortPullbackSignal;
             
             if (EnableLogging)
             {
-                if (activeOrder == null)
+                if (activeOrder == null && activeSignal == null)
                     _logWriter?.WriteLine($"[{Time[0]}] >> CancelActivePullbackOrder({(isLong ? "LONG" : "SHORT")}): No order to cancel (null)");
-                else
+                else if (activeOrder != null)
                     _logWriter?.WriteLine($"[{Time[0]}] >> CancelActivePullbackOrder({(isLong ? "LONG" : "SHORT")}): Order={activeOrder.Name}, State={activeOrder.OrderState}");
+                else
+                    _logWriter?.WriteLine($"[{Time[0]}] >> CancelActivePullbackOrder({(isLong ? "LONG" : "SHORT")}): Signal={activeSignal}, searching for order...");
             }
             
-            if (activeOrder == null)
-                return;
-
-            // Cancel if order is in a cancellable state (Working or Accepted only)
-            if (activeOrder.OrderState == OrderState.Working || 
-                activeOrder.OrderState == OrderState.Accepted)
+            // Try to cancel using Order reference first
+            if (activeOrder != null)
             {
-                CancelOrder(activeOrder);
-                
-                if (EnableLogging)
-                    _logWriter?.WriteLine($"[{Time[0]}] >> ✗✗✗ CANCELLED: {activeOrder.Name} (State was: {activeOrder.OrderState}) ✗✗✗");
+                // Cancel if order is in a cancellable state
+                if (activeOrder.OrderState == OrderState.Working || 
+                    activeOrder.OrderState == OrderState.Accepted ||
+                    activeOrder.OrderState == OrderState.PendingSubmit ||
+                    activeOrder.OrderState == OrderState.PendingChange)
+                {
+                    CancelOrder(activeOrder);
+                    
+                    if (EnableLogging)
+                        _logWriter?.WriteLine($"[{Time[0]}] >> ✗✗✗ CANCELLED: {activeOrder.Name} (State was: {activeOrder.OrderState}) ✗✗✗");
+                }
+                else
+                {
+                    if (EnableLogging)
+                        _logWriter?.WriteLine($"[{Time[0]}] >> Cannot cancel {activeOrder.Name} - State={activeOrder.OrderState} (not cancellable)");
+                }
             }
-            else
+            // Fallback: Try to find and cancel by signal name if Order reference is lost
+            else if (activeSignal != null)
             {
-                if (EnableLogging)
-                    _logWriter?.WriteLine($"[{Time[0]}] >> Cannot cancel {activeOrder.Name} - State={activeOrder.OrderState} (not cancellable)");
+                foreach (Order order in Account.Orders)
+                {
+                    if (order.Name == activeSignal && 
+                        (order.OrderState == OrderState.Working || 
+                         order.OrderState == OrderState.Accepted ||
+                         order.OrderState == OrderState.PendingSubmit ||
+                         order.OrderState == OrderState.PendingChange))
+                    {
+                        CancelOrder(order);
+                        
+                        if (EnableLogging)
+                            _logWriter?.WriteLine($"[{Time[0]}] >> ✗✗✗ CANCELLED BY SIGNAL: {order.Name} (State was: {order.OrderState}) ✗✗✗");
+                        break;
+                    }
+                }
             }
 
-            // Clear the tracking
+            // Always clear the tracking when this method is called
             if (isLong)
+            {
                 _activeLongPullbackOrder = null;
+                _activeLongPullbackSignal = null;
+            }
             else
+            {
                 _activeShortPullbackOrder = null;
+                _activeShortPullbackSignal = null;
+            }
         }
 
         private BarRelation DetermineRelation()
@@ -949,13 +984,14 @@ namespace NinjaTrader.NinjaScript.Strategies
                 }
                 else
                 {
-                    // This is a pullback order - store the Order object reference
+                    // This is a pullback order - store the Order object reference AND signal name
                     Order placedOrder = null;
                     
                     if (setup.IsLong)
                     {
                         placedOrder = EnterLongLimit(0, true, config.Qty, entryPrice, signalName);
                         _activeLongPullbackOrder = placedOrder;
+                        _activeLongPullbackSignal = signalName;
                         
                         if (EnableLogging)
                             _logWriter?.WriteLine($"  {signalName}: {config.Level} @ {entryPrice:F2} Qty={config.Qty} [STORED ORDER REFERENCE]");
@@ -964,6 +1000,7 @@ namespace NinjaTrader.NinjaScript.Strategies
                     {
                         placedOrder = EnterShortLimit(0, true, config.Qty, entryPrice, signalName);
                         _activeShortPullbackOrder = placedOrder;
+                        _activeShortPullbackSignal = signalName;
                         
                         if (EnableLogging)
                             _logWriter?.WriteLine($"  {signalName}: {config.Level} @ {entryPrice:F2} Qty={config.Qty} [STORED ORDER REFERENCE]");
@@ -1003,6 +1040,22 @@ namespace NinjaTrader.NinjaScript.Strategies
             {
                 if (EnableLogging)
                     _logWriter?.WriteLine($"[{Time[0]}] REJECTED: {order.Name} - {error} - {nativeError}");
+                
+                // Clear tracking if this was the active pullback order
+                if (_activeLongPullbackSignal == order.Name)
+                {
+                    _activeLongPullbackOrder = null;
+                    _activeLongPullbackSignal = null;
+                    if (EnableLogging)
+                        _logWriter?.WriteLine($"[{Time[0]}] >> Clearing _activeLongPullbackOrder (rejected: {order.Name})");
+                }
+                else if (_activeShortPullbackSignal == order.Name)
+                {
+                    _activeShortPullbackOrder = null;
+                    _activeShortPullbackSignal = null;
+                    if (EnableLogging)
+                        _logWriter?.WriteLine($"[{Time[0]}] >> Clearing _activeShortPullbackOrder (rejected: {order.Name})");
+                }
                 return;
             }
 
@@ -1040,17 +1093,19 @@ namespace NinjaTrader.NinjaScript.Strategies
                     setup.TotalQuantityFilled += filled;
 
                     // Clear the active pullback tracking since it filled
-                    if (setup.IsLong && _activeLongPullbackOrder != null && _activeLongPullbackOrder.Name == order.Name)
+                    if (_activeLongPullbackSignal == order.Name)
                     {
                         if (EnableLogging)
                             _logWriter?.WriteLine($"[{Time[0]}] >> Clearing _activeLongPullbackOrder (filled: {order.Name})");
                         _activeLongPullbackOrder = null;
+                        _activeLongPullbackSignal = null;
                     }
-                    else if (!setup.IsLong && _activeShortPullbackOrder != null && _activeShortPullbackOrder.Name == order.Name)
+                    else if (_activeShortPullbackSignal == order.Name)
                     {
                         if (EnableLogging)
                             _logWriter?.WriteLine($"[{Time[0]}] >> Clearing _activeShortPullbackOrder (filled: {order.Name})");
                         _activeShortPullbackOrder = null;
+                        _activeShortPullbackSignal = null;
                     }
 
                     double riskFromFill = setup.IsLong ? 
@@ -1091,17 +1146,19 @@ namespace NinjaTrader.NinjaScript.Strategies
             if (orderState == OrderState.Cancelled)
             {
                 // Clear tracking if this was the active pullback
-                if (_activeLongPullbackOrder != null && _activeLongPullbackOrder.Name == order.Name)
+                if (_activeLongPullbackSignal == order.Name)
                 {
                     if (EnableLogging)
                         _logWriter?.WriteLine($"[{Time[0]}] >> Clearing _activeLongPullbackOrder (cancelled: {order.Name})");
                     _activeLongPullbackOrder = null;
+                    _activeLongPullbackSignal = null;
                 }
-                else if (_activeShortPullbackOrder != null && _activeShortPullbackOrder.Name == order.Name)
+                else if (_activeShortPullbackSignal == order.Name)
                 {
                     if (EnableLogging)
                         _logWriter?.WriteLine($"[{Time[0]}] >> Clearing _activeShortPullbackOrder (cancelled: {order.Name})");
                     _activeShortPullbackOrder = null;
+                    _activeShortPullbackSignal = null;
                 }
                     
                 if (EnableLogging)
@@ -1126,6 +1183,8 @@ namespace NinjaTrader.NinjaScript.Strategies
             _entryCounter = 0;
             _activeLongPullbackOrder = null;
             _activeShortPullbackOrder = null;
+            _activeLongPullbackSignal = null;
+            _activeShortPullbackSignal = null;
         }
 
         protected override void OnPositionUpdate(Position position, double averagePrice, int quantity, MarketPosition marketPosition)
@@ -1135,8 +1194,8 @@ namespace NinjaTrader.NinjaScript.Strategies
                 if (EnableLogging)
                 {
                     _logWriter?.WriteLine($"[{Time[0]}] === POSITION NOW FLAT === Avg={averagePrice:F2}");
-                    string longOrder = _activeLongPullbackOrder != null ? _activeLongPullbackOrder.Name : "NULL";
-                    string shortOrder = _activeShortPullbackOrder != null ? _activeShortPullbackOrder.Name : "NULL";
+                    string longOrder = _activeLongPullbackSignal != null ? _activeLongPullbackSignal : "NULL";
+                    string shortOrder = _activeShortPullbackSignal != null ? _activeShortPullbackSignal : "NULL";
                     _logWriter?.WriteLine($"[{Time[0]}] >> Active PB Orders BEFORE clear: Long={longOrder}, Short={shortOrder}");
                 }
                     
@@ -1148,6 +1207,8 @@ namespace NinjaTrader.NinjaScript.Strategies
                 _stallRelationStreak = 0;
                 _activeLongPullbackOrder = null;
                 _activeShortPullbackOrder = null;
+                _activeLongPullbackSignal = null;
+                _activeShortPullbackSignal = null;
             }
         }
         #endregion
