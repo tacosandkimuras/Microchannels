@@ -15,6 +15,11 @@ namespace NinjaTrader.NinjaScript.Strategies
 {
     /// <summary>
     /// MC-Natev1: Configurable continuation and multi-microchannel support.
+    /// 
+    /// IMPORTANT: This strategy is designed for NinjaTrader 8.
+    /// OrderState enum values are different between NT7 and NT8:
+    /// - NT7: PendingSubmit, PendingChange
+    /// - NT8: Submitted, ChangeSubmitted (use these instead)
     /// </summary>
     public class MCNatev1 : Strategy
     {
@@ -435,9 +440,16 @@ namespace NinjaTrader.NinjaScript.Strategies
             if (activeOrder == null)
                 return;
 
-            // Cancel if order is in a cancellable state (Working or Accepted only)
+            // NT8 Note: Valid OrderState values for cancellation include Initialized, Submitted, 
+            // Accepted, Working, and ChangeSubmitted. Do NOT use NT7 states like PendingSubmit 
+            // or PendingChange as they don't exist in NT8 (use Submitted and ChangeSubmitted instead).
+            // Cannot cancel: Filled, PartFilled, Cancelled, Rejected
+            //
+            // We check for Working or Accepted as these are the most common cancellable states.
+            // Submitted state is rare for limit orders but could be included if needed.
             if (activeOrder.OrderState == OrderState.Working || 
-                activeOrder.OrderState == OrderState.Accepted)
+                activeOrder.OrderState == OrderState.Accepted ||
+                activeOrder.OrderState == OrderState.Submitted)
             {
                 CancelOrder(activeOrder);
                 
